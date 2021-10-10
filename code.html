@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>APP NAME | The Code </title>
+    <title>SUPERDOG EVENTS | The Code </title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,9 +18,17 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png">
+<!--FONT CSS-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
 
-    <!-- StyleSheet Site.css -->
-    <link rel="stylesheet" href="/css/site.css">
+<!-- StyleSheet Site.css -->
+<link rel="stylesheet" href="/css/site.css">
+
+<!-- StyleSheet Style.css -->
+<link rel="stylesheet" href="/css/style.css">
+
 
     <!-- Prism -->
     <link rel="stylesheet" href="/css/prism.css">
@@ -35,7 +43,7 @@
             <!-- <a class="navbar-brand" href="#">
                 <img src="/img/android-chrome-192x192.png" alt="" width="30" height="30">
             </a> -->
-            <a class="navbar-brand" href="/index.html">App Name</a>
+            <!-- <a class="navbar-brand" href="/index.html">App Name</a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -43,19 +51,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/index.html">Home</a>
+                        <a id="sDFont" class="nav-link" href="/index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/app.html">The App</a>
+                        <a id="sDFont" class="nav-link" href="/app.html">The App</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
+                        <a id="sDFont" class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
+                     <li class="nav-item">
+                         <a id="sDFont" class="nav-link" target="_blank" href="https://github.com/danijha-lee/SuperDog">The Repo</a>
+                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">The Repo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank " href="https://monaeleeportfolio.netlify.app">About Me</a>
+                        <a id="sDFont" class="nav-link" target="_blank " href="https://monaeleeportfolio.netlify.app">About Me</a>
                     </li>
                 </ul>
             </div>
@@ -67,35 +75,250 @@
 
         <div class="container col-xxl-8 px-4 py-5 mt-5">
 
-            <h2 class="border-1 border-bottom border-dark">The Code</h2>
+            <h2 id="sDFont" class="border-1 border-bottom border-dark">The Code</h2>
             <div class="row">
                 <div class="col-lg-8 col-sm-12">
                     <!-- My CODE -->
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            function displayMessage() {
-                            let msg = "";
+                           let events = [{
+                           event: "ComicCon",
+                           city: "New York",
+                           state: "New York",
+                           attendance: 240000,
+                           date: "06/01/2017"
+                           },
+                           {
+                           event: "ComicCon",
+                           city: "New York",
+                           state: "New York",
+                           attendance: 250000,
+                           date: "06/01/2018"
+                           },
+                           {
+                           event: "ComicCon",
+                           city: "New York",
+                           state: "New York",
+                           attendance: 257000,
+                           date: "06/01/2019"
+                           },
+                           {
+                           event: "ComicCon",
+                           city: "San Diego",
+                           state: "California",
+                           attendance: 130000,
+                           date: "06/01/2017"
+                           },
+                           {
+                           event: "ComicCon",
+                           city: "San Diego",
+                           state: "California",
+                           attendance: 140000,
+                           date: "06/01/2018"
+                           },
+                           {
+                           event: "ComicCon",
+                           city: "San Diego",
+                           state: "California",
+                           attendance: 150000,
+                           date: "06/01/2019"
+                           },
+                           {
+                           event: "HeroesCon",
+                           city: "Charlotte",
+                           state: "North Carolina",
+                           attendance: 40000,
+                           date: "06/01/2017"
+                           },
+                           {
+                           event: "HeroesCon",
+                           city: "Charlotte",
+                           state: "North Carolina",
+                           attendance: 45000,
+                           date: "06/01/2018"
+                           },
+                           {
+                           event: "HeroesCon",
+                           city: "Charlotte",
+                           state: "North Carolina",
+                           attendance: 50000,
+                           date: "06/01/2019"
+                           }
+                           ]
 
-                            msg = document.getElementById("message").value;
-
-                            alert(msg);
-                            }
 
 
-                            function displayMessage2() {
-                            let msg = "";
+                           //build a dropdown of distinct cities
+                           function buildDropDown() {
 
-                            msg = document.getElementById("message").value;
+                           let eventDD = document.getElementById("eventDropDown");
 
-                            Swal.fire(msg);
-                            }
+                           //clear out the drop down
+                           eventDD.innerHTML = "";
+                           //Get the template
+                           let ddTemplate = document.getElementById("cityDD-template");
+
+                           let curEvents = JSON.parse(localStorage.getItem("eventData")) || events;
+
+
+                           //get unique values from the array
+                           let distinctEvents = [...new Set(curEvents.map((event) =&lt; event.city))];
+
+                           let ddItemNode = document.importNode(ddTemplate.content, true);
+
+                           let ddItem = ddItemNode.querySelector("a");
+                           //&lt;li&lt; &lt;a class = "dropdown-item" onclick
+                           ="getEvents(this)"&lt;&lt;/a&lt;&lt;/li&lt;
+
+                           ddItem.setAttribute("data-string", "All");
+                           //&lt;li&lt; &lt;a class = "dropdown-item" data-string="All" onclick
+                           ="getEvents(this)"&lt;&lt;/a&lt;&lt;/li&lt;
+
+                           ddItem.textContent = "All";
+                           //&lt;li&lt; &lt;a class = "dropdown-item" data-string="All" onclick
+                           ="getEvents(this)"&lt;All&lt;/a&lt;&lt;/li&lt;
+
+                           eventDD.appendChild(ddItemNode);
+
+                           for (let index = 0; index &lt; distinctEvents.length; index++) {
+                           ddItemNode = document.importNode(ddTemplate.content, true);
+                           ddItem = ddItemNode.querySelector("a");
+                           ddItem.setAttribute("data-string", distinctEvents[index]);
+                           ddItem.textContent = distinctEvents[index];
+                           eventDD.appendChild(ddItemNode);
+
+                           }
+                           //display stats for all events
+                           displayStats(curEvents);
+
+                           displayData();
+                           }
+
+                           //displays data for the current events
+                           function displayData() {
+                           let template = document.getElementById("eventData-template");
+                           let eventBody = document.getElementById("eventBody");
+
+                           eventBody.innerHTML = "";
+                           let curEvents = JSON.parse(localStorage.getItem("eventData")) || events;
+
+                           for (let index = 0; index &lt; curEvents.length; index++) {
+                           let eventRow = document.importNode(template.content, true);
+                           let eventCols = eventRow.querySelectorAll("td");
+
+                           eventCols[0].textContent = curEvents[index].event;
+                           eventCols[1].textContent = curEvents[index].city;
+                           eventCols[2].textContent = curEvents[index].state;
+                           eventCols[3].textContent = curEvents[index].attendance;
+                           eventCols[4].textContent = new Date(
+                           curEvents[index].date).toLocaleString();
+
+                           eventBody.appendChild(eventRow);
+
+                           }
+                           }
+                           //display stats for the filtered events "array"
+                           function displayStats(filteredEvents) {
+                           let total = 0;
+                           let average = 0;
+                           let most = 0;
+                           let least = -1;
+                           let currentAttendance = 0;
+
+                           for (let index = 0; index &lt; filteredEvents.length; index++) {
+                           currentAttendance = filteredEvents[index].attendance;
+                           total += currentAttendance;
+
+                           if (most &lt; currentAttendance) {
+                           most = currentAttendance;
+
+                           }
+                           if (least &lt; currentAttendance || least &lt; 0) {
+                           least = currentAttendance;
+                           }
+
+                           }
+                           //calculate the events for the selected City
+                           average = total / filteredEvents.length;
+
+                           document.getElementById("total").innerHTML = total.toLocaleString();
+                           document.getElementById("most").innerHTML = most.toLocaleString();
+                           document.getElementById("average").innerHTML = average.toLocaleString(
+                           undefined, {
+                           minimumFractionDigits: 0,
+                           maximumFractionDigits: 0
+                           }
+                           )
+                           document.getElementById("least").innerHTML = least.toLocaleString();
+                           }
+
+                           //get the events for the selected City
+                           function getEvents(ddElement) {
+
+                           let cityName = ddElement.getAttribute("data-string");
+
+                           let curEvents = JSON.parse(localStorage.getItem("eventData")) || events;
+                           let filteredEvents = curEvents;
+                           document.getElementById("statsHeader").innerHTML = `Stats for ${cityName} Events`
+
+                           if (cityName != "All") {
+                           filteredEvents = curEvents.filter(function (item) {
+                           if (item.city == cityName) {
+                           return item;
+                           }
+                           })
+
+                           }
+                           displayStats(filteredEvents);
+                           }
+
+                           //save event to local storage
+                           function saveData() {
+                           let curEvents = JSON.parse(localStorage.getItem("eventData")) || events;
+                           let stateSelect = document.getElementById("newEventState");
+                           let eventDate = document.getElementById("addDate").value;
+                           let eventDate2 = `${eventDate} 00:00`;
+                           let newEvent = {
+                           event: document.getElementById("addEventName").value,
+                           city: document.getElementById("addCity").value,
+                           state: stateSelect.options[stateSelect.selectedIndex].text,
+                           attendance: parseInt(document.getElementById("addAttendance").value, 10),
+                           date: new Date(eventDate2).toLocaleDateString()
+
+                           };
+
+                           //push this object we just created to the curEvents array
+                           curEvents.push(newEvent);
+                           //Save Changes to the DataBase (local Storage)
+                           localStorage.setItem("eventData", JSON.stringify(curEvents));
+
+                           buildDropDown();
+                           displayData();
+
+                           swal({
+                           title: "Thank You!",
+                           text: `Your Event ${newEvent.event} has been added!`,
+                           icon: "success",
+                           });
+
+                           }
+
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4 col-sm-12">
-                    <p>The code is structured in one function</p>
-                    <h5>getValues</h5>
-                    <p>Prints out your Message!</p>
+                    <h5>buildDropDown</h5>
+                    <p>This function builds a dropdown  of distinct cities.
+                    </p>
+                    <hr>
+                    <h5>displayData</h5>
+                    <p>This function displays the data for the current events.
+                    </p>
+                    <hr>
+                    <h5>displayStats</h5>
+                    <p>
+                        This function displays stats for the filtered events array.
+                    </p>
                 </div>
             </div>
         </div>
@@ -113,9 +336,9 @@
                         <span class="text-muted">&copy2021</span>Monae Lee | TheMonaeLee@gmail.com
                     </div>
                 </div>
-                <!-- <div class="col justify-content-center">
-                    <img src="/img/Black Background - Name - Crop.png" height="50">
-                </div> -->
+                 <div class="col justify-content-center">
+                   <!-- <img src="/img/Black Background - Name - Crop.png" height="50">-->
+                </div> 
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
                         <div class="col social"><a href="#"><i class="fab fa-linkedin fa-2x"></i></a></div>

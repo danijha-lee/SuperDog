@@ -16,8 +16,16 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
 
+    <!--FONT CSS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
+
     <!-- StyleSheet Site.css -->
     <link rel="stylesheet" href="/css/site.css">
+
+     <!-- StyleSheet Style.css -->
+     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Favicon-->
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png">
@@ -32,7 +40,7 @@
             <a class="navbar-brand" href="/index.html">
                 <!-- <img src="/img/android-chrome-192x192.png" alt="" width="30" height="30"> -->
             </a>
-            <a class="navbar-brand" href="#">Home</a>
+            <!-- <a id="sDFont" class="navbar-brand" href="/index.html">Home</a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,19 +48,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/index.html">Super Dog Events</a>
+                        <a id="sDFont" class="nav-link active" aria-current="page" href="/index.html">SuperDog Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/app.html">The App</a>
+                        <a id="sDFont" class="nav-link" href="/app.html">The App</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/code.html">The Code</a>
+                        <a id="sDFont" class="nav-link" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">The Repo</a>
+                        <a id="sDFont" class="nav-link" target="_blank" href="https://github.com/danijha-lee/SuperDog">The Repo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank " href="https://monaeleeportfolio.netlify.app">About Me</a>
+                        <a id="sDFont" class="nav-link" target="_blank " href="https://monaeleeportfolio.netlify.app">About Me</a>
                     </li>
                 </ul>
             </div>
@@ -64,9 +72,12 @@
 
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2">
-                <div class="col order-last order-md-first">
-                    <h1 class="fw-bold">APP NAME: A Coding Challenge</h1>
-                    <h4 class="lead">Your Project Description Goes Here</h4>
+                <div class="col order-last mt-5 order-md-first">
+                    <h1 id="sDFont" class="fw-bold">superdog events: A Coding Challenge</h1>
+                    <!-- <h4 id="sDFont" class="lead">Given an array of objects of event data, display the following; total
+                        attendance by city, average attendance by city, least attended event by city, most attended event by city. This project also allows 
+                        the user to add additional events and stores them in local storage. 
+                    </h4> -->
                     <ul class="fa-ul pt-2 checklist">
                         <li><span class="fa-li"><i class="fas fa-check-square"></i></span>CSS and Bootstrap Layout</li>
                         <li><span class="fa-li"><i class="fas fa-check-square"></i></span>JS Fundamentals</li>
@@ -76,7 +87,7 @@
                         </li>
                         <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Javascript Boolean Logic</li>
                     </ul>
-                    <a type="button" href="/app.html" target="_blank" class="btn btn-outline-dark">Try it out!</a>
+                    <a type="button" href="/app.html" target="_blank" class="btn btn-dark">Try it out!</a>
                     <h5 class="fw-bold mt-5">Technologies Used</h5>
                     <div class="d-flex justify-content-start">
                         <div class="row">
@@ -87,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col d-flex align-items-center justify-content-center">
+                <div class="col mt-5 d-flex align-items-center justify-content-center">
                     <img class="img-fluid" src="/img/Super Dog Dog with cape logo.png" width="500">
                 </div>
             </div>
@@ -106,9 +117,9 @@
                         <span class="text-muted">&copy2021</span>Monae Lee | Themonaelee@gmail.com
                     </div>
                 </div>
-                <!-- <div class="col justify-content-center">
-                    <img src="/img/Black Background - Name - Crop.png" height="50">
-                </div> -->
+                 <div class="col justify-content-center">
+                    <!--<img src="/img/Black Background - Name - Crop.png" height="50">-->
+                </div> 
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
                         <div class="col social"><a href="#"><i class="fab fa-linkedin fa-2x"></i></a></div>
